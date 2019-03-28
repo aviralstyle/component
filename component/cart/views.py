@@ -20,11 +20,13 @@ def cart_update(request):
     print(request.POST)
     product_id=request.POST.get('product')
     product_obj=Product.objects.get(id = product_id)
+    current_user = request.user
     cart_obj, new_obj = Cart.objects.new_or_get(request)
     #print (new_obj)
-    cart_obj.product.add(product_obj)
-    print("3")
-    current_user = request.user
-    print(current_user.id)
-    Product.objects.filter(id=product_id).update(status='IN USE')
+    if product_obj in cart_obj.product.all():
+        cart_obj.product.remove(product_obj)
+        Product.objects.filter(id=product_id).update(status='FREE', uid=0)
+    else:
+        cart_obj.product.add(product_obj)
+        Product.objects.filter(id=product_id).update(status='IN USE', uid=current_user.id)
     return redirect("cart:home")

@@ -58,14 +58,20 @@
               <p> {{ obj.condition }} </p>
             </div>
             <div class = 'col'>
-              {% if obj.status == 'IN USE' or obj.condition == 'FAULTY' or obj.uid != '0' %}
-                  {% if obj.uid != userid %}
+              {% if obj.condition == 'FAULTY' %}
                     <p> NO ACCESS </p>
-                  {% else %}
-                      <p> OWN </p>
-                  {% endif %}
+
               {% else %}
-                  {% include 'product/form.html' with product=obj cart=cart %}
+
+                  <form method='POST' action='{% url "cart:update" %}' class="form"> {% csrf_token %}
+                    <input type="hidden" name='product' value='{{ obj.id }}'/>
+                    {% if obj.uid == userid and obj.status == 'IN USE'%}
+                      <button type='submit' class='btn btn-link'>Remove</button>
+                    {% else %}
+                      <button type='submit' class='btn btn-success'>Access</button>
+                    {% endif %}
+                  </form>
+
               {% endif %}
 
             </div>

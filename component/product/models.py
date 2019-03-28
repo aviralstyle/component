@@ -2,13 +2,13 @@ from django.db import models
 
 # Create your models here.
 
-    
+
 
 
 class Product(models.Model):
     id              = models.CharField(max_length=20, primary_key=True, blank=False)
 
-    uid             = models.CharField(max_length=20, default=0)
+    uid             = models.IntegerField(max_length=20, default=0)
 
     name            = models.CharField(max_length=50)
 
