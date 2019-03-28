@@ -1,0 +1,7 @@
+{% if cart.product.exists %}
+{% for product in cart.product.all %}
+  {{ product.id }} {{ product.name }} </br>
+{% endfor %}
+{% else %}
+<p class='lead'>Cart is empty</p>
+{% endif %}

@@ -1,0 +1,7 @@
+<h1> Category Page </h1>
+
+{% for i, j in object_list %}
+
+  <a id = "Category-selected" href="{% url "detail" parameter=i%}" value="{{ i }}">{{ i }}</a><br/>
+
+{% endfor %}
