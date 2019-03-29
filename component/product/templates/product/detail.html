@@ -68,7 +68,11 @@
                     {% if obj.uid == userid and obj.status == 'IN USE'%}
                       <button type='submit' class='btn btn-link'>Remove</button>
                     {% else %}
-                      <button type='submit' class='btn btn-success'>Access</button>
+                      {% if obj.uid != userid and obj.uid != 0 %}
+                          <p> NO ACCESS </p>
+                      {% else %}
+                        <button type='submit' class='btn btn-success'>Access</button>
+                      {% endif %}  
                     {% endif %}
                   </form>
 

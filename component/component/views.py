@@ -56,7 +56,7 @@ def register_page(request):
         password                = form.cleaned_data.get("password")
 
         new_user= User.objects.create_user(username, email, password) # here new user is added after all datacheck
-
+        return redirect("/login")
 
 
     return render(request, "register.html", context)
