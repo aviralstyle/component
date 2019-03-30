@@ -12,28 +12,64 @@
     <body>
 
       <div class="text-center">
-        <h1>{{ title }}</h1>
-
+        <h1>tracker Page</h1>
       </div>
+      <br/><br/>
 
       <div class = 'container'>
         <div class = 'row'>
           <div class = 'col'>
-            <p> {{ content }} </p>
-            {% if request.user.is_authenticated == False %}
-              <a href ='{% url 'login' %}'>login</a>
-            {% endif %}
+            <h4> User Id </h3>
           </div>
+          <div class = 'col'>
+            <h4> User Name </h3>
+          </div>
+          <div class = 'col'>
+            <h4> Product Id </h3>
+          </div>
+          <div class = 'col'>
+            <h4> Product Name </h3>
+          </div>
+          <div class = 'col'>
+            <h4> Access Time </h3>
+          </div>
+          <div class = 'col'>
+            <h4> Remove Time </h3>
+          </div>
+
         </div>
-          {% if request.user.is_authenticated %}
-            <div class = 'row'>
-              <div class = 'col'>
-                <p> {{ premium_content }} </p>
-              </div>
+        <br/>
+
+        {% for ob in t %}
+          {% if ob.user.id == cu.id %}
+        <div class = 'row'>
+          <div class = 'col'>
+            <p> {{ob.user.id}} </p>
+          </div>
+
+            <div class = 'col'>
+              <p> {{ob.user.username }} </p>
             </div>
-            <a href ='{% url 'component' %}'>Categories</a></br></br>
-            <a href ='{% url 'tracker' %}'> My Components</a>
-          {% endif %}
+            <div class = 'col'>
+              <p>   {{ ob.product.id }} </p>
+            </div>
+            <div class = 'col'>
+              <p> {{ob.product.name}} </p>
+            </div>
+            <div class = 'col'>
+              <p> {{ob.accessed}} </p>
+            </div>
+            <div class = 'col'>
+              {% if ob.product.status == 'IN USE' %}
+                <p> STILL IN USE </p>
+              {% else %}
+                <p> {{ob.removed }}
+              {% endif %}
+            </div>
+
+          </div>
+            {% endif %}
+            {% endfor %}
       </div>
 
       <!-- Optional JavaScript -->

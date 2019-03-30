@@ -1,6 +1,10 @@
 {% if cart.product.exists %}
 {% for product in cart.product.all %}
-  {{ product.id }} {{ product.name }} </br>
+  {{ product.id }} {{ product.name }}  </br>
+  <form method='POST' action='{% url "cart:update" %}' class="form"> {% csrf_token %}
+    <input type="hidden" name='product' value='{{ product.id }}'/>
+    <button type='submit' class='btn btn-link'>Remove</button>
+  </form>
 {% endfor %}
 {% else %}
 <p class='lead'>Cart is empty</p>

@@ -8,11 +8,11 @@ User = settings.AUTH_USER_MODEL
 class CartManager(models.Manager):
     def new_or_get(self, request):
         crtid = request.user.id
-        print("crtid= ",crtid)
+        #print("crtid= ",crtid)
         #print(crtid)
 
         cart_id = request.user.id
-        print("Cartid=",cart_id)
+        #print("Cartid=",cart_id)
                #crtid   = request.user.id
         qs = self.get_queryset().filter(crtid=cart_id)
         if qs.count() == 1:
@@ -24,7 +24,7 @@ class CartManager(models.Manager):
                 cart_obj.user = request.user
                 cart_obj.save()
         else:
-            print("count=", qs.count())
+            #print("count=", qs.count())
             cart_obj = Cart.objects.new(user=request.user)
             new_obj = True
             #crtid = request.user.id

@@ -21,12 +21,14 @@ from django.contrib import admin
 
 from django.views.generic import TemplateView
 from .views import home_page, login_page, register_page
+from tracker.views import tracker
 
 urlpatterns = [
     url(r'^login/$', login_page, name='login'),
     url(r'^register/$', register_page, name='register'),
     url(r'^product/$', product_list_view, name='product'),
     url(r'^component/$', component, name='component'),
+    url(r'^tracker/$', tracker, name='tracker'),
 
     url(r'^cart/', include(('cart.urls', 'cart'), namespace='cart')),
     #url(r'^detail/$', product_detail_view, name='detail'),
