@@ -44,7 +44,7 @@ class Tracker(models.Model):
     user        = models.ForeignKey(User, null = True, blank=True, on_delete = models.CASCADE)
     product     = models.ForeignKey(Product,blank=True, null=True, on_delete = models.CASCADE)
     accessed    = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    removed     = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    removed     = models.DateTimeField(auto_now_add=False, blank=True, null=True)
 
     objects = TrackerManager()
 

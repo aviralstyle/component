@@ -60,11 +60,8 @@
               <p> {{ob.accessed}} </p>
             </div>
             <div class = 'col'>
-              {% if ob.product.status == 'IN USE' %}
-                <p> STILL IN USE </p>
-              {% else %}
-                <p> {{ob.removed }}
-              {% endif %}
+                <p> {{ob.removed }}</p>
+            
             </div>
 
           </div>
