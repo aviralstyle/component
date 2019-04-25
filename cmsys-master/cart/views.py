@@ -5,17 +5,18 @@ from .models import Cart
 from product.models import Product
 from tracker.models import Tracker
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 # from dateutil.relativedelta import relativedelta
 #def cart_create(user=None):  #default method
 #    cart_obj = Cart.objects.create(user=None)
 #    print("new cart created")
 #    return cart_obj
-
+@login_required
 def cart_home(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
     return render(request, "cart/home.html", {"cart": cart_obj})
 
-
+@login_required
 def cart_update(request):
     print(request.POST)
     product_id=request.POST.get('product')

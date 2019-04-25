@@ -3,6 +3,7 @@ from .models import Product
 from django.shortcuts import render, redirect
 
 from cart.models import Cart
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def component(request):
@@ -13,6 +14,7 @@ def component(request):
     }
     return render(request, "product/component.html", context)
 
+@login_required
 def product_list_view(request):
     queryset = Product.objects.all()
     context = {
@@ -21,7 +23,7 @@ def product_list_view(request):
     return render(request, "product/list.html", context)
 
 #    product_obj=Product.objects.get(id = product_id)
-
+@login_required
 def product_detail_view(request, parameter):
 
 #    instance = Product.objects.get(type=i)
