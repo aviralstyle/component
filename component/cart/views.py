@@ -5,7 +5,7 @@ from .models import Cart
 from product.models import Product
 from tracker.models import Tracker
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
+
 #def cart_create(user=None):  #default method
 #    cart_obj = Cart.objects.create(user=None)
 #    print("new cart created")

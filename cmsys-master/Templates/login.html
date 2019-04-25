@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="main.js"></script>
+</head>
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color:#4262a5;
+        color: white;
+        text-align: center;
+        font-size: 0.8em;
+     }
+    .button {
+              background-color:#4262a5;
+              border: none;
+              border-radius: 2px;
+              color: white;
+              padding: 5px 5px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 3px 3px;
+              cursor: pointer;
+            }
+    .body1{
+        margin: auto;
+         width: 18%;
+        border: 1px solid #4262a5 ;
+        }
+.center {
+    margin: auto;
+    text-align: center;
+    color: white;
+   width: 100%;
+   padding: 4px;
+ </style>
+<body>
+        <div style="background-color:#4262a5;  width:100%; float:left;">
+                        <div class="center">
+                           <h1>Component Management System</h1>
+                         </div>
+                         </div>
+                         <br>
+                         <br>
+                         <br>
+                         <br>
+
+
+<div class="body1">
+<br>
+    <div class="mx-auto" style="width: 200px;">
+    <form method="POST">
+            <div style="background-color:#4262a5;  width:100%; float:left;">
+                    <div class="center">
+                       <h3>Login</h3>
+                     </div>
+                     </div>
+            {% csrf_token %}
+            {{form}}
+            <br>
+           <button type="submit" class="button" style="background-color: #4262a5; color: white;">
+           <b>Submit</b></button><br>
+            <a href ='{% url 'register' %}'>Register</a>
+            <br>
+            <a href="/">Home</a>
+    </form>
+    </div>
+</div>
+<div class="footer">
+                <p>Copyright© wipro python team </p>     
+            </div>
+</body>
+</html>
+
+

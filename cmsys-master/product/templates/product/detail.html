@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="main.js"></script>
+</head>
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color:#4262a5;
+        color: white;
+        text-align: center;
+        font-size: 0.8em;
+     }
+    .button {
+              background-color:#4262a5;
+              border: none;
+              border-radius: 2px;
+              color: white;
+              padding: 5px 5px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 3px 3px;
+              cursor: pointer;
+            }
+    .body1{
+        margin: auto;
+         width: 80%;
+        }
+.center {
+    margin: auto;
+    text-align: center;
+    color: white;
+   width: 100%;
+   padding: 4px;}
+ </style>
+<body>
+        <div style="background-color:#4262a5;  width:100%; float:left;">
+                        <div class="center">
+                           <h1>Component Management System</h1>
+                         </div>
+                         </div>
+                         <br>
+                         <br>
+                         <br>
+                         <br>
+
+
+<div class="body1">
+<br>
+    <div class="mx-auto" style="width: 100%; padding: 20px">
+      <div style="background-color:white;  width:30%; float:center; text-align: center; margin-bottom: 20px; margin-left: 33%">
+                    <div class="center" style="color: #4262a5; text-align: center">
+                       <h3>Detail Page</h3>
+                     </div>
+                     </div>
+    <div class = 'container'>
+        <div class = 'row'>
+          <div class = 'col'>
+            <h4> Product Id </h3>
+          </div>
+          <div class = 'col'>
+            <h4> Product Name </h3>
+          </div>
+          <div class = 'col'>
+            <h4> Product Status </h3>
+          </div>
+          <div class = 'col'>
+            <h4> Product Condition </h3>
+          </div>
+          <div class = 'col'>
+            <h4> Product Access  </h3>
+          </div>
+
+        </div>
+        <br/>
+        {% for obj in object_list %}
+        <div class = 'row'>
+          <div class = 'col'>
+            <p> {{ obj.id }} </p>
+          </div>
+
+            <div class = 'col'>
+              <p> {{ obj.name }} </p>
+            </div>
+            <div class = 'col'>
+              <p> {{ obj.status }} </p>
+            </div>
+            <div class = 'col'>
+              <p> {{ obj.condition }} </p>
+            </div>
+            <div class = 'col'>
+              {% if obj.condition == 'FAULTY' %}
+                    <p> NO ACCESS </p>
+
+              {% else %}
+
+                  <form method='POST' action='{% url "cart:update"%}' class="form"> {% csrf_token %}
+                    <input type="hidden" name='product' value='{{ obj.id }}'/>
+                    {% if obj.uid == userid and obj.status == 'IN USE'%}
+                      <button type='submit' class='btn btn-link'>Remove</button>
+                    {% else %}
+                      {% if obj.uid != userid and obj.uid != 0 %}
+                          <p> NO ACCESS </p>
+                      {% else %}
+                        <button type='submit' class='btn btn-success'>Access</button>
+                      {% endif %}
+                    {% endif %}
+                  </form>
+
+              {% endif %}
+
+            </div>
+
+          </div>
+            {% endfor %}
+      </div>
+    </div>
+</div>
+<div class="footer">
+                <p>Copyright© wipro python team </p>     
+            </div>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
