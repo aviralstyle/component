@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^logout/$', logout_page, name='logout'),
     url(r'^register/$', register_page, name='register'),
     url(r'^product/$', product_list_view, name='product'),
+
     url(r'^component/$', component, name='component'),
     url(r'^tracker/$', tracker, name='tracker'),
 

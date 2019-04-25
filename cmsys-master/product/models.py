@@ -6,9 +6,9 @@ from django.db import models
 
 
 class Product(models.Model):
-    id              = models.CharField(max_length=20, primary_key=True, blank=False)
+    id              = models.IntegerField(max_length=20, primary_key=True, blank=False)
 
-    uid             = models.IntegerField(max_length=20, default=0)
+    uid             = models.IntegerField(default=0)
 
     name            = models.CharField(max_length=50)
 

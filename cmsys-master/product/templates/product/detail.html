@@ -8,6 +8,13 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="main.js"></script>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("option").value;
+  document.getElementById("demo").innerHTML = x;
+}
+</script>
 </head>
 <style>
     .footer {
@@ -56,6 +63,9 @@
                          <br>
 
 
+
+
+
 <div class="body1">
 <br>
     <div class="mx-auto" style="width: 100%; padding: 20px">
@@ -65,18 +75,22 @@
                      </div>
                      </div>
     <div class = 'container'>
+
         <div class = 'row'>
           <div class = 'col'>
             <h4> Product Id </h3>
           </div>
           <div class = 'col'>
             <h4> Product Name </h3>
+
           </div>
           <div class = 'col'>
             <h4> Product Status </h3>
+
           </div>
           <div class = 'col'>
-            <h4> Product Condition </h3>
+            <h4>Condition </h3>
+
           </div>
           <div class = 'col'>
             <h4> Product Access  </h3>
@@ -84,7 +98,29 @@
 
         </div>
         <br/>
+
+
+        <form method='POST' action='{% url "detail" parameter=tpe %} ' class="form"> {% csrf_token %}
+          <input type="hidden" name='sort'/>
+
+          <select name="sort">
+            <option value="#">select</option>
+            <option value="1">name(A-Z)</option>
+            <option value="2">name(Z-A)</option>
+            <option value="3">status(FREE)</option>
+            <option value="4">status(IN USE)</option>
+            <option value="5">condition(USABLE)</option>
+            <option value="6">condition(FAULTY)</option>
+          </select>
+          <button type='submit'>Submit</button>
+        </form>
+
+      <br/>
+      <br/>
+
+
         {% for obj in object_list %}
+
         <div class = 'row'>
           <div class = 'col'>
             <p> {{ obj.id }} </p>
@@ -127,8 +163,9 @@
       </div>
     </div>
 </div>
+
 <div class="footer">
-                <p>Copyright© wipro python team </p>     
+                <p>Copyright© wipro python team </p>
             </div>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
