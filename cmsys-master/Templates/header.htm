@@ -1,0 +1,42 @@
+{% load static %}
+
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="bg">      
+        <div style="background-color:#4262a5;  width:100%; float:left;">
+                <div class="center">
+                    <h1>Component Management System</h1>
+                </div>
+        </div>
+    </div>
+
+        {% if request.user.is_authenticated %}
+        <!--nav bar -->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light position: fixed">
+            <a class="navbar-brand" href=""> <b>CMS</b> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link" href="/component">Categories</a>
+                <a class="nav-item nav-link" href="/tracker">My activity</a>
+                <a class="nav-item nav-link" href="/logout">Logout</a>
+      
+              </div>
+            </div>
+          </nav>
+          
+        {% endif %}
+        
+        {% block content %}
+        {% endblock %}
+        <!-- footer code -->
+        <div class="footer">
+                <p>Copyright© wipro python team </p>
+        </div>
+    </body>
+<html>

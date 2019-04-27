@@ -1,4 +1,9 @@
+{% extends "header.htm" %}
+
+{% block content %}
+
 <!doctype html>
+
   <html lang="en">
     <head>
       <!-- Required meta tags -->
@@ -40,12 +45,8 @@
             </style>
     </head>
     <body>
- <div style="background-color:#4262a5;  width:100%; float:left;">
-    <div class="center">
-       <h1>Component Management System</h1>
-     </div>
-     </div>
-     <br><br><br><br>
+
+     <br><br>
       <div class="text-center">
       <div style=" color:DarkCyan;" >
         <h1>Tracker Page</h1>
@@ -112,9 +113,7 @@
             {% endif %}
             {% endfor %}
       </div>
-      <div class="footer">
-    <p>Copyright© wipro python team </p>     
-</div>
+
 
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -123,3 +122,5 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
   </html>
+
+{% endblock %}

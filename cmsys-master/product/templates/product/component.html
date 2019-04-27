@@ -1,3 +1,7 @@
+{% extends "header.htm" %}
+
+{% block content %}
+
 
 <!DOCTYPE html>
 <html>
@@ -69,13 +73,8 @@ div.desc {
 }
  </style>
  <body>
-        <div style="background-color:#4262a5;  width:100%; float:left;">
-                        <div class="center">
-                           <h1>Component Management System</h1>
-                         </div>
-                         </div>
-                         <br>
-                         <br>
+
+
                          <br>
                          <br>
 
@@ -120,7 +119,7 @@ div.desc {
 
  
 
- 
+ <!--
 
 {% for i, j in object_list %}
 <div class="center">
@@ -133,8 +132,10 @@ div.desc {
  </form>
     </div>
 </div>
-<div class="footer">
-                <p>Copyright© wipro python team </p>     
-            </div>
+-->
+
+
 </body>
 </html>
+
+{% endblock %}
