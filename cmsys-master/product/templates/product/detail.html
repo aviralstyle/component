@@ -73,29 +73,6 @@ function myFunction() {
                        <h3>Detail Page</h3>
                      </div>
                      </div>
-    <div class = 'container'>
-
-        <div class = 'row'>
-          <div class = 'col'>
-            <h4> Product Id </h3>
-          </div>
-          <div class = 'col'>
-            <h4> Product Name </h3>
-
-          </div>
-          <div class = 'col'>
-            <h4> Product Status </h3>
-
-          </div>
-          <div class = 'col'>
-            <h4>Condition </h3>
-
-          </div>
-          <div class = 'col'>
-            <h4> Product Access  </h3>
-          </div>
-
-        </div>
         <br/>
 
 
@@ -117,28 +94,24 @@ function myFunction() {
       <br/>
       <br/>
 
+<table style="width:100%">
+  <tr>
+    <th>Product Id </th>
+    <th>Product Name</th> 
+    <th>Product Status</th>
+    <th>Condition</th>
+    <th>Product Access</th>
+  </tr>
+  <tr>
+{% for obj in object_list %}
 
-        {% for obj in object_list %}
-
-        <div class = 'row'>
-          <div class = 'col'>
-            <p> {{ obj.id }} </p>
-          </div>
-
-            <div class = 'col'>
-              <p> {{ obj.name }} </p>
-            </div>
-            <div class = 'col'>
-              <p> {{ obj.status }} </p>
-            </div>
-            <div class = 'col'>
-              <p> {{ obj.condition }} </p>
-            </div>
-            <div class = 'col'>
-              {% if obj.condition == 'FAULTY' %}
-                    <p> NO ACCESS </p>
-
-              {% else %}
+    <td>{{ obj.id }}</td>
+    <td>{{ obj.name }}</td>
+    <td>{{ obj.status }}</td>
+    <td> {{ obj.condition }}</td>
+    {% if obj.condition == 'FAULTY' %}
+    <td>NO ACCESS </td>
+    {% else %}
 
                   <form method='POST' action='{% url "cart:update"%}' class="form"> {% csrf_token %}
                     <input type="hidden" name='product' value='{{ obj.id }}'/>
@@ -148,17 +121,21 @@ function myFunction() {
                       {% if obj.uid != userid and obj.uid != 0 %}
                           <p> NO ACCESS </p>
                       {% else %}
-                        <button type='submit' class='btn btn-success'>Access</button>
+                       <td> <button type='submit' class='btn btn-success'>Access</button></td>
                       {% endif %}
                     {% endif %}
                   </form>
 
-              {% endif %}
+                    {% endif %}
 
-            </div>
 
-          </div>
-            {% endfor %}
+</tr>
+{% endfor %}
+</table>
+            
+            <br>
+<br>
+
       </div>
     </div>
 </div>

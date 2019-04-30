@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth import get_user_model
+from django.contrib.auth import (get_user_model,authenticate)
 from django.db.models.functions import Length
 
 
@@ -8,6 +8,23 @@ User = get_user_model()
 class LoginForm(forms.Form):
     username= forms.CharField(required=True)
     password= forms.CharField(widget=forms.PasswordInput, required=True)
+    def clean(self):
+        super().clean()
+        username=self.cleaned_data.get('username')
+        password=self.cleaned_data.get('password')
+
+        
+        if username and password:
+            user = authenticate(username=username, password=password)
+            if not user:
+                qs = User.objects.filter(username=username)
+                if not qs.exists():
+                    raise forms.ValidationError("Invalid Username")
+                else:
+                    try:
+                        user.check_password(password)!=True
+                    except:
+                        raise forms.ValidationError('Incorrect Password')
 
 
 
@@ -44,6 +61,11 @@ class RegisterForm(forms.Form):
          data = self.cleaned_data
          password=self.cleaned_data.get('password')
          password2=self.cleaned_data.get('password2')
+         email=self.cleaned_data.get('email')
+         email_qs = User.objects.filter(email=email)
+         if email_qs.exists():
+            raise forms.ValidationError('Email address already registered!')
+
          if password2 != password:
              raise forms.ValidationError("Passwords must match")
          return data

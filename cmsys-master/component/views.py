@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
+from django.contrib import messages
 #from .models import CustomUser
 
 
@@ -24,15 +25,17 @@ def login_page(request):
     }
 
     if form.is_valid():
-        print(form.cleaned_data)
         username= form.cleaned_data.get("username")
         password= form.cleaned_data.get("password")
         user = authenticate(request,  username=username, password=password)
-        print(user)
+        if not user:
+            messages.error(request, "Error!")
+
         if user is not None:
             login(request, user)
             return redirect("/")
         else:
+            messages.error(request, "Error!")
             print("Wrong password")
 
     return  render(request, "login.html", context)

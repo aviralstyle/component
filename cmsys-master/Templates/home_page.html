@@ -72,11 +72,7 @@
 
                          
                          
-<div class="right">
-          {% if request.user.is_authenticated == False %}
-              <a href="login"><button class="button">Login</button></a>
-          {% endif %}
-</div>
+
             
 
                          
@@ -119,6 +115,12 @@
                      {% endif %}
       </div>
 </div>
+</div>
+<div class="center">
+          {% if request.user.is_authenticated == False %}
+              <a href="login"><button class="button">Login</button></a>
+              <a href="register"><button class="button">Register</button></a>
+          {% endif %}
 </div>
 
 
